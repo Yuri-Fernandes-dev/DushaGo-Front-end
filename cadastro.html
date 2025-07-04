@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DushaGo - Cadastro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .signup-container {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 480px;
+            padding: 2rem;
+        }
+
+        .signup-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .signup-header .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .signup-header .logo i {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .signup-header h1 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .signup-options {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .signup-option {
+            background: var(--white);
+            border: 2px solid var(--gray-medium);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            position: relative;
+        }
+
+        .signup-option:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .signup-option.selected {
+            border-color: var(--primary-color);
+            background: var(--gray-light);
+        }
+
+        .signup-option-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .signup-option-header i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .signup-option-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .signup-option-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .signup-form {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .signup-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--gray-medium);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group .input-hint {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+
+        .file-input-container {
+            border: 2px dashed var(--gray-medium);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 1rem;
+        }
+
+        .file-input-container:hover {
+            border-color: var(--primary-color);
+            background: var(--gray-light);
+        }
+
+        .file-input-container i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .file-input-container p {
+            margin: 0;
+            color: var(--text-light);
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .file-preview {
+            display: none;
+            margin-top: 1rem;
+        }
+
+        .file-preview img {
+            max-width: 100%;
+            border-radius: var(--radius);
+        }
+
+        .btn-signup {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-signup:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-signup:disabled {
+            background: var(--gray-medium);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .login-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        .earnings-highlight {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        .form-steps {
+            display: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-steps.active {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .step.active {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .step-number {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--gray-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .step.active .step-number {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .step-line {
+            flex: 1;
+            height: 2px;
+            background: var(--gray-light);
+            margin: 0 0.5rem;
+        }
+
+        .step-line.active {
+            background: var(--primary-color);
+        }
+
+        .form-navigation {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn-prev {
+            flex: 1;
+            padding: 1rem;
+            background: var(--gray-light);
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-prev:hover {
+            background: var(--gray-medium);
+        }
+
+        .btn-next {
+            flex: 2;
+            padding: 1rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-next:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Estilo para o campo de telefone */
+        .form-group input[type="tel"] {
+            letter-spacing: 1px;
+        }
+
+        /* Estilos para a mensagem de análise */
+        .analysis-message {
+            text-align: center;
+            padding: 2rem;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .analysis-icon {
+            font-size: 4rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        .analysis-message h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .analysis-message p {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .analysis-message ul {
+            text-align: left;
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .analysis-message li {
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-light);
+        }
+
+        .whatsapp-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #25D366;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .whatsapp-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="signup-container">
+            <div class="signup-header">
+                <div class="logo">
+                    <i class="fas fa-car-wash"></i>
+                    <h1>DushaGo</h1>
+                </div>
+                <p>Escolha como você quer usar o DushaGo</p>
+            </div>
+
+            <div class="signup-options">
+                <div class="signup-option" data-type="cliente">
+                    <div class="signup-option-header">
+                        <i class="fas fa-user"></i>
+                        <h2 class="signup-option-title">Quero lavar meu carro</h2>
+                    </div>
+                    <p class="signup-option-description">
+                        Encontre os melhores lavadores próximos a você e agende sua lavagem com praticidade
+                    </p>
+                </div>
+
+                <div class="signup-option" data-type="lavador">
+                    <div class="signup-option-header">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <h2 class="signup-option-title">Quero ganhar dinheiro</h2>
+                    </div>
+                    <p class="signup-option-description">
+                        Seja um lavador parceiro e ganhe dinheiro com flexibilidade de horários
+                    </p>
+                    <div class="earnings-highlight">
+                        <i class="fas fa-chart-line"></i>
+                        Ganhe até R$ 3.000 por mês
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulário Cliente -->
+            <form id="formCliente" class="signup-form">
+                <div class="form-group">
+                    <label for="nomeCliente">Nome completo</label>
+                    <input type="text" id="nomeCliente" required>
+                </div>
+                <div class="form-group">
+                    <label for="cpfCliente">CPF</label>
+                    <input type="text" id="cpfCliente" required maxlength="14" placeholder="000.000.000-00">
+                    <div class="input-hint">Digite apenas números</div>
+                </div>
+                <div class="form-group">
+                    <label for="telefoneCliente">Telefone</label>
+                    <input type="text" id="telefoneCliente" required maxlength="15" placeholder="(00) 00000-0000">
+                    <div class="input-hint">Digite seu WhatsApp</div>
+                </div>
+                <div class="form-group">
+                    <label for="emailCliente">E-mail</label>
+                    <input type="email" id="emailCliente" required>
+                </div>
+                <div class="form-group">
+                    <label for="senhaCliente">Senha</label>
+                    <input type="password" id="senhaCliente" required>
+                    <div class="input-hint">Mínimo 8 caracteres</div>
+                </div>
+                <button type="submit" class="btn-signup">
+                    <i class="fas fa-user-plus"></i>
+                    Criar conta
+                </button>
+            </form>
+
+            <!-- Formulário Lavador -->
+            <form id="formLavador" class="signup-form">
+                <!-- Etapas do cadastro -->
+                <div class="form-steps">
+                    <div class="step active">
+                        <div class="step-number">1</div>
+                        <span>Dados Pessoais</span>
+                    </div>
+                    <div class="step-line"></div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <span>Documentos</span>
+                    </div>
+                </div>
+
+                <!-- Etapa 1: Dados Pessoais -->
+                <div class="form-step active" id="step1">
+                    <div class="form-group">
+                        <label for="nomeLavador">Nome completo</label>
+                        <input type="text" id="nomeLavador" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cpfLavador">CPF</label>
+                        <input type="text" id="cpfLavador" required maxlength="14" placeholder="000.000.000-00">
+                        <div class="input-hint">Digite apenas números</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefoneLavador">Telefone</label>
+                        <input type="text" id="telefoneLavador" required maxlength="15" placeholder="(00) 00000-0000">
+                        <div class="input-hint">Digite seu WhatsApp</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailLavador">E-mail</label>
+                        <input type="email" id="emailLavador" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="senhaLavador">Senha</label>
+                        <input type="password" id="senhaLavador" required>
+                        <div class="input-hint">Mínimo 8 caracteres</div>
+                    </div>
+                    <button type="button" class="btn-next" onclick="nextStep()">
+                        Próximo
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Etapa 2: Documentos -->
+                <div class="form-step" id="step2" style="display: none;">
+                    <div class="form-group">
+                        <label>Foto do RG ou CNH (frente)</label>
+                        <div class="file-input-container" onclick="document.getElementById('docFrente').click()">
+                            <i class="fas fa-id-card"></i>
+                            <p>Clique para adicionar a foto</p>
+                            <input type="file" id="docFrente" class="file-input" accept="image/*" required>
+                        </div>
+                        <div class="file-preview" id="previewFrente"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Foto do RG (verso) ou CNH</label>
+                        <div class="file-input-container" onclick="document.getElementById('docVerso').click()">
+                            <i class="fas fa-id-card"></i>
+                            <p>Clique para adicionar a foto</p>
+                            <input type="file" id="docVerso" class="file-input" accept="image/*" required>
+                        </div>
+                        <div class="file-preview" id="previewVerso"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Selfie com documento</label>
+                        <div class="file-input-container" onclick="document.getElementById('selfieDoc').click()">
+                            <i class="fas fa-camera"></i>
+                            <p>Tire uma selfie segurando seu documento</p>
+                            <input type="file" id="selfieDoc" class="file-input" accept="image/*" required>
+                        </div>
+                        <div class="file-preview" id="previewSelfie"></div>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="btn-prev" onclick="prevStep()">
+                            <i class="fas fa-arrow-left"></i>
+                            Voltar
+                        </button>
+                        <button type="submit" class="btn-next">
+                            <i class="fas fa-check"></i>
+                            Finalizar cadastro
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Etapa 3: Análise (será mostrada após o envio) -->
+                <div class="form-step" id="step3" style="display: none;">
+                    <div class="analysis-message">
+                        <div class="analysis-icon">
+                            <i class="fas fa-file-search"></i>
+                        </div>
+                        <h3>Documentos em análise</h3>
+                        <p>Seus documentos foram enviados com sucesso e estão em análise pela nossa equipe.</p>
+                        <ul>
+                            <li>A análise pode levar até 24 horas úteis</li>
+                            <li>Você receberá uma notificação por WhatsApp e e-mail</li>
+                            <li>Em caso de aprovação, você poderá começar a trabalhar imediatamente</li>
+                        </ul>
+                        <div class="contact-info">
+                            <p>Em caso de dúvidas, entre em contato:</p>
+                            <a href="https://wa.me/SEU_NUMERO" class="whatsapp-link">
+                                <i class="fab fa-whatsapp"></i>
+                                Falar com Suporte
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="login-link">
+                Já tem uma conta? <a href="index.html">Fazer login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast de notificação -->
+    <div class="toast" id="toast">
+        <span id="toastMessage"></span>
+    </div>
+
+    <script>
+        // Elementos do DOM
+        const signupOptions = document.querySelectorAll('.signup-option');
+        const formCliente = document.getElementById('formCliente');
+        const formLavador = document.getElementById('formLavador');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toastMessage');
+
+        // Funções de utilidade
+        function formatCPF(input) {
+            let value = input.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            input.value = value;
+        }
+
+        function showToast(message, duration = 3000) {
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), duration);
+        }
+
+        function previewImage(input, previewId) {
+            const preview = document.getElementById(previewId);
+            const file = input.files[0];
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.innerHTML = `<img src="${e.target.result}" alt="Preview">`;
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Navegação entre etapas do formulário do lavador
+        function nextStep() {
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+            const steps = document.querySelectorAll('.step');
+            const line = document.querySelector('.step-line');
+
+            // Validar campos da etapa 1
+            const inputs = step1.querySelectorAll('input');
+            let isValid = true;
+            inputs.forEach(input => {
+                if (!input.value) {
+                    isValid = false;
+                    input.style.borderColor = 'red';
+                }
+            });
+
+            if (!isValid) {
+                showToast('Preencha todos os campos obrigatórios');
+                return;
+            }
+
+            step1.style.display = 'none';
+            step2.style.display = 'block';
+            steps[1].classList.add('active');
+            line.classList.add('active');
+        }
+
+        function prevStep() {
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+            const steps = document.querySelectorAll('.step');
+            const line = document.querySelector('.step-line');
+
+            step2.style.display = 'none';
+            step1.style.display = 'block';
+            steps[1].classList.remove('active');
+            line.classList.remove('active');
+        }
+
+        // Event Listeners
+        signupOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                // Remove seleção anterior
+                signupOptions.forEach(opt => opt.classList.remove('selected'));
+                
+                // Seleciona a opção clicada
+                option.classList.add('selected');
+                
+                // Mostra o formulário correspondente
+                const type = option.dataset.type;
+                formCliente.classList.remove('active');
+                formLavador.classList.remove('active');
+                
+                if (type === 'cliente') {
+                    formCliente.classList.add('active');
+                } else {
+                    formLavador.classList.add('active');
+                    document.querySelector('.form-steps').classList.add('active');
+                }
+            });
+        });
+
+        // Formatação de CPF
+        document.getElementById('cpfCliente').addEventListener('input', function() {
+            formatCPF(this);
+        });
+
+        document.getElementById('cpfLavador').addEventListener('input', function() {
+            formatCPF(this);
+        });
+
+        // Preview de imagens
+        document.getElementById('docFrente').addEventListener('change', function() {
+            previewImage(this, 'previewFrente');
+        });
+
+        document.getElementById('docVerso').addEventListener('change', function() {
+            previewImage(this, 'previewVerso');
+        });
+
+        document.getElementById('selfieDoc').addEventListener('change', function() {
+            previewImage(this, 'previewSelfie');
+        });
+
+        // Função para formatar telefone
+        function formatTelefone(input) {
+            let value = input.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+            
+            if (value.length > 2) {
+                value = `(${value.slice(0,2)}) ${value.slice(2)}`;
+            }
+            if (value.length > 9) {
+                value = `${value.slice(0,9)}-${value.slice(9)}`;
+            }
+            
+            input.value = value;
+        }
+
+        // Event listeners para formatação de telefone
+        document.getElementById('telefoneCliente').addEventListener('input', function() {
+            formatTelefone(this);
+        });
+
+        document.getElementById('telefoneLavador').addEventListener('input', function() {
+            formatTelefone(this);
+        });
+
+        // Submit dos formulários
+        formCliente.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            // Aqui você implementará a lógica de cadastro do cliente
+            showToast('Cadastro em processamento...');
+        });
+
+        formLavador.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Simular envio dos documentos
+            showToast('Enviando documentos...');
+            
+            // Simular processamento
+            setTimeout(() => {
+                // Esconder etapa 2
+                document.getElementById('step2').style.display = 'none';
+                
+                // Mostrar mensagem de análise
+                document.getElementById('step3').style.display = 'block';
+                
+                // Atualizar indicador de progresso
+                document.querySelector('.form-steps').style.display = 'none';
+            }, 2000);
+        });
+    </script>
+</body>
+</html> 

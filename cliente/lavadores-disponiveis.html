@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DushaGo</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/lavadores.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <div class="logo">
+                <i class="fas fa-car-wash"></i>
+                <h1>DushaGo</h1>
+            </div>
+            <button class="btn-icon" id="btnMenu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </header>
+
+        <main class="main-content">
+            <!-- Etapa 1: Seleção de Serviço -->
+            <div id="servicoStep" class="step active">
+                <div class="step-header">
+                    <h2>Escolha o tipo de lavagem</h2>
+                </div>
+                <div class="service-options">
+                    <div class="service-option" data-service="simples">
+                        <div class="service-option-header">
+                            <span class="service-name">Lavagem Simples</span>
+                            <span class="service-price">R$ 50,00</span>
+                        </div>
+                        <p class="service-description">
+                            Lavagem externa, aspiração e limpeza interna básica
+                        </p>
+                        <div class="service-time">
+                            <i class="far fa-clock"></i>
+                            <span>45 min</span>
+                        </div>
+                    </div>
+
+                    <div class="service-option" data-service="completa">
+                        <div class="service-option-header">
+                            <span class="service-name">Lavagem Completa</span>
+                            <span class="service-price">R$ 80,00</span>
+                        </div>
+                        <p class="service-description">
+                            Lavagem externa, interna completa, cera e pneus
+                        </p>
+                        <div class="service-time">
+                            <i class="far fa-clock"></i>
+                            <span>1h 30min</span>
+                        </div>
+                    </div>
+
+                    <div class="service-option" data-service="premium">
+                        <div class="service-option-header">
+                            <span class="service-name">Lavagem Premium</span>
+                            <span class="service-price">R$ 120,00</span>
+                        </div>
+                        <p class="service-description">
+                            Lavagem completa + polimento, hidratação de couro e higienização
+                        </p>
+                        <div class="service-time">
+                            <i class="far fa-clock"></i>
+                            <span>2h 30min</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Etapa 2: Endereço e Confirmação do Serviço -->
+            <div id="enderecoStep" class="step">
+                <div class="step-header">
+                    <button class="btn-back" id="btnVoltarServico">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <h2>Confirme seu endereço</h2>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Serviço Selecionado</h3>
+                    </div>
+                    <div class="card-body" id="servicoResumo">
+                        <!-- Detalhes do serviço serão inseridos via JavaScript -->
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Seu Endereço</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="rua">Rua</label>
+                            <input type="text" id="rua" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="numero">Número</label>
+                            <input type="text" id="numero" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="complemento">Complemento (opcional)</label>
+                            <input type="text" id="complemento">
+                        </div>
+                        <div class="form-group">
+                            <label for="bairro">Bairro</label>
+                            <input type="text" id="bairro" required>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" id="btnBuscarLavadores">
+                    Buscar Lavadores Disponíveis
+                </button>
+            </div>
+
+            <!-- Etapa 3: Lista de Lavadores -->
+            <div id="lavadoresStep" class="step">
+                <div class="step-header">
+                    <button class="btn-back" id="btnVoltarEndereco">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <h2>Lavadores Disponíveis</h2>
+                </div>
+                <div class="service-summary card">
+                    <div class="service-summary-content" id="servicoSelecionadoResumo">
+                        <!-- Resumo do serviço será inserido via JavaScript -->
+                    </div>
+                </div>
+                <div class="lavadores-grid" id="lavadoresGrid">
+                    <!-- Lavadores serão inseridos via JavaScript -->
+                </div>
+            </div>
+
+            <!-- Etapa 4: Confirmação Final -->
+            <div id="confirmacaoStep" class="step">
+                <div class="step-header">
+                    <button class="btn-back" id="btnVoltarLavadores">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <h2>Confirmar Solicitação</h2>
+                </div>
+                <div class="confirmation-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Resumo do Pedido</h3>
+                        </div>
+                        <div class="card-body" id="pedidoResumo">
+                            <!-- Resumo completo será inserido via JavaScript -->
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" id="btnConfirmar">
+                        Confirmar e Solicitar Lavagem
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Toast de notificação -->
+        <div class="toast" id="toast">
+            <span id="toastMessage"></span>
+        </div>
+
+        <!-- Loading overlay -->
+        <div class="loading-overlay" id="loading" style="display: none;">
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+
+    <script src="../js/cliente-lavadores.js"></script>
+</body>
+</html> 

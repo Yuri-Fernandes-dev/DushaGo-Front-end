@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DushaGo Admin - Painel de Controle</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-car-wash"></i>
+                    <span>DushaGo</span>
+                </div>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#usuariosSubmenu" data-bs-toggle="collapse" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <span>Usuários</span>
+                        <i class="fas fa-chevron-down ms-auto"></i>
+                    </a>
+                    <ul class="collapse list-unstyled submenu" id="usuariosSubmenu">
+                        <li>
+                            <a href="usuarios.html" class="nav-link">
+                                <i class="fas fa-list"></i>
+                                <span>Lista de Usuários</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="usuarios-pendentes.html" class="nav-link">
+                                <i class="fas fa-clock"></i>
+                                <span>Pendentes</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="usuarios-bloqueados.html" class="nav-link">
+                                <i class="fas fa-ban"></i>
+                                <span>Bloqueados</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#lavadoresSubmenu" data-bs-toggle="collapse" class="nav-link">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Lavadores</span>
+                        <i class="fas fa-chevron-down ms-auto"></i>
+                    </a>
+                    <ul class="collapse list-unstyled submenu" id="lavadoresSubmenu">
+                        <li>
+                            <a href="lavadores.html" class="nav-link">
+                                <i class="fas fa-list"></i>
+                                <span>Lista de Lavadores</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="lavadores-aprovacao.html" class="nav-link">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Aprovações</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="lavadores-desempenho.html" class="nav-link">
+                                <i class="fas fa-chart-bar"></i>
+                                <span>Desempenho</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#servicosSubmenu" data-bs-toggle="collapse" class="nav-link">
+                        <i class="fas fa-soap"></i>
+                        <span>Serviços</span>
+                        <i class="fas fa-chevron-down ms-auto"></i>
+                    </a>
+                    <ul class="collapse list-unstyled submenu" id="servicosSubmenu">
+                        <li>
+                            <a href="servicos.html" class="nav-link">
+                                <i class="fas fa-list"></i>
+                                <span>Lista de Serviços</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="servicos-categorias.html" class="nav-link">
+                                <i class="fas fa-tags"></i>
+                                <span>Categorias</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="servicos-precos.html" class="nav-link">
+                                <i class="fas fa-dollar-sign"></i>
+                                <span>Preços</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#financeiroSubmenu" data-bs-toggle="collapse" class="nav-link">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span>Financeiro</span>
+                        <i class="fas fa-chevron-down ms-auto"></i>
+                    </a>
+                    <ul class="collapse list-unstyled submenu" id="financeiroSubmenu">
+                        <li>
+                            <a href="financeiro-receitas.html" class="nav-link">
+                                <i class="fas fa-plus-circle"></i>
+                                <span>Receitas</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="financeiro-pagamentos.html" class="nav-link">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span>Pagamentos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="financeiro-relatorios.html" class="nav-link">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Relatórios</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="avaliacoes.html" class="nav-link">
+                        <i class="fas fa-star"></i>
+                        <span>Avaliações</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#configuracoesSubmenu" data-bs-toggle="collapse" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Configurações</span>
+                        <i class="fas fa-chevron-down ms-auto"></i>
+                    </a>
+                    <ul class="collapse list-unstyled submenu" id="configuracoesSubmenu">
+                        <li>
+                            <a href="configuracoes-gerais.html" class="nav-link">
+                                <i class="fas fa-sliders-h"></i>
+                                <span>Gerais</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="configuracoes-notificacoes.html" class="nav-link">
+                                <i class="fas fa-bell"></i>
+                                <span>Notificações</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="configuracoes-seguranca.html" class="nav-link">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Segurança</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content -->
+        <div id="content">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+
+                    <div class="d-flex align-items-center">
+                        <div class="dropdown notifications me-3">
+                            <button class="btn position-relative" type="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-bell"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    3
+                                </span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><h6 class="dropdown-header">Notificações</h6></li>
+                                <li><a class="dropdown-item" href="#">Novo lavador aguardando aprovação</a></li>
+                                <li><a class="dropdown-item" href="#">Nova avaliação reportada</a></li>
+                                <li><a class="dropdown-item" href="#">Relatório diário disponível</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown">
+                                <img src="https://via.placeholder.com/32" class="rounded-circle" alt="Admin">
+                                <span>Admin</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Perfil</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Configurações</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-sign-out-alt me-2"></i>Sair</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <div class="container-fluid py-4">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h2 class="mb-4">Dashboard</h2>
+                    </div>
+                    <!-- Cards de Resumo -->
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-subtitle mb-2 text-muted">Lavagens Hoje</h6>
+                                        <h3 class="card-title mb-0" id="totalLavagens">48</h3>
+                                    </div>
+                                    <div class="icon-bg bg-primary">
+                                        <i class="fas fa-car-wash"></i>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <span class="text-success">
+                                        <i class="fas fa-arrow-up"></i> 12%
+                                    </span>
+                                    <span class="text-muted">vs ontem</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-subtitle mb-2 text-muted">Faturamento</h6>
+                                        <h3 class="card-title mb-0" id="faturamento">R$ 2.450</h3>
+                                    </div>
+                                    <div class="icon-bg bg-success">
+                                        <i class="fas fa-dollar-sign"></i>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <span class="text-success">
+                                        <i class="fas fa-arrow-up"></i> 8%
+                                    </span>
+                                    <span class="text-muted">vs ontem</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-subtitle mb-2 text-muted">Lavadores Online</h6>
+                                        <h3 class="card-title mb-0" id="lavadoresOnline">27</h3>
+                                    </div>
+                                    <div class="icon-bg bg-info">
+                                        <i class="fas fa-user-tie"></i>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <span class="text-danger">
+                                        <i class="fas fa-arrow-down"></i> 5%
+                                    </span>
+                                    <span class="text-muted">vs ontem</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-subtitle mb-2 text-muted">Avaliação Média</h6>
+                                        <h3 class="card-title mb-0" id="avaliacaoMedia">4.8</h3>
+                                    </div>
+                                    <div class="icon-bg bg-warning">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <span class="text-success">
+                                        <i class="fas fa-equals"></i> Estável
+                                    </span>
+                                    <span class="text-muted">vs ontem</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gráficos e Tabelas -->
+                <div class="row mb-4">
+                    <!-- Gráfico de Lavagens -->
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Lavagens por Hora</h5>
+                                <canvas id="lavangesChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Lavadores Pendentes -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Lavadores Pendentes</h5>
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">João Silva</h6>
+                                            <small class="text-muted">3 min</small>
+                                        </div>
+                                        <p class="mb-1">Documentos enviados</p>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Maria Santos</h6>
+                                            <small class="text-muted">1h</small>
+                                        </div>
+                                        <p class="mb-1">Aguardando análise</p>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Pedro Oliveira</h6>
+                                            <small class="text-muted">2h</small>
+                                        </div>
+                                        <p class="mb-1">Documentos pendentes</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Últimas Atividades -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Últimas Atividades</h5>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Cliente</th>
+                                                <th>Lavador</th>
+                                                <th>Serviço</th>
+                                                <th>Valor</th>
+                                                <th>Status</th>
+                                                <th>Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>#1234</td>
+                                                <td>Ana Silva</td>
+                                                <td>Carlos Santos</td>
+                                                <td>Lavagem Completa</td>
+                                                <td>R$ 80,00</td>
+                                                <td><span class="badge bg-success">Concluído</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#1233</td>
+                                                <td>João Pedro</td>
+                                                <td>Maria Oliveira</td>
+                                                <td>Lavagem Premium</td>
+                                                <td>R$ 120,00</td>
+                                                <td><span class="badge bg-warning">Em andamento</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#1232</td>
+                                                <td>Lucas Costa</td>
+                                                <td>Pedro Silva</td>
+                                                <td>Lavagem Simples</td>
+                                                <td>R$ 50,00</td>
+                                                <td><span class="badge bg-danger">Cancelado</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom JS -->
+    <script src="js/admin.js"></script>
+</body>
+</html> 
