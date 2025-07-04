@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DushaGo - Agendamento</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .agendamento-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .back-button {
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .agendamento-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .form-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .date-time-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .endereco-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1rem;
+        }
+
+        .summary {
+            background: var(--gray-light);
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin-top: 2rem;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .total {
+            font-weight: bold;
+            border-top: 2px solid var(--text-color);
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .date-time-grid,
+            .endereco-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="agendamento-container">
+        <div class="header">
+            <a href="dashboard.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Voltar
+            </a>
+            <div class="logo">
+                <i class="fas fa-car-wash"></i>
+                <h1>DushaGo</h1>
+            </div>
+        </div>
+
+        <form class="agendamento-form" id="agendamentoForm">
+            <div class="form-section">
+                <h3>Dados do Lavador</h3>
+                <div id="washerInfo">
+                    <!-- Informações do lavador serão inseridas via JavaScript -->
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Data e Hora</h3>
+                <div class="date-time-grid">
+                    <div class="form-group">
+                        <label for="data">Data</label>
+                        <input type="date" id="data" name="data" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="hora">Hora</label>
+                        <input type="time" id="hora" name="hora" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Endereço da Lavagem</h3>
+                <div class="endereco-grid">
+                    <div class="form-group">
+                        <label for="rua">Rua</label>
+                        <input type="text" id="rua" name="rua" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="numero">Número</label>
+                        <input type="text" id="numero" name="numero" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="complemento">Complemento</label>
+                    <input type="text" id="complemento" name="complemento">
+                </div>
+                <div class="form-group">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" id="bairro" name="bairro" required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Resumo do Pedido</h3>
+                <div class="summary">
+                    <div class="summary-item">
+                        <span>Serviço:</span>
+                        <span id="serviceName">Lavagem Completa</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Lavador:</span>
+                        <span id="washerName">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Data:</span>
+                        <span id="summaryDate">-</span>
+                    </div>
+                    <div class="summary-item total">
+                        <span>Total:</span>
+                        <span id="totalPrice">R$ 0,00</span>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Confirmar Agendamento</button>
+        </form>
+    </div>
+
+    <script src="../js/agendamento.js"></script>
+</body>
+</html> 

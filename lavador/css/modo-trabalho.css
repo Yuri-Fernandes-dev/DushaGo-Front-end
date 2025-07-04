@@ -1,0 +1,218 @@
+.status-section {
+    text-align: center;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 500px;
+}
+
+.status-indicator {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.status-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+}
+
+.status-indicator.offline .status-icon {
+    background: #e74c3c;
+    color: white;
+}
+
+.status-indicator.online .status-icon {
+    background: #2ecc71;
+    color: white;
+}
+
+.status-text h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.status-text p {
+    margin: 0.5rem 0 0 0;
+    color: #666;
+}
+
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    width: 100%;
+    max-width: 300px;
+}
+
+/* Seção de Solicitações */
+.solicitacoes-section {
+    padding: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.solicitacoes-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.solicitacao-card {
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+}
+
+.solicitacao-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.cliente-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cliente-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+}
+
+.cliente-details h3 {
+    margin: 0;
+    color: var(--text-color);
+}
+
+.cliente-details p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.solicitacao-body {
+    margin: 1rem 0;
+}
+
+.solicitacao-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #666;
+}
+
+.solicitacao-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* Seção de Serviço Atual */
+.servico-atual-section {
+    padding: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.card {
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.card-header {
+    padding: 1.5rem;
+    background: var(--primary-color);
+    color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.badge-progress {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--gray-light);
+    text-align: center;
+}
+
+.btn-success {
+    background: #2ecc71;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #27ae60;
+}
+
+/* Animações */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.solicitacao-card.new {
+    animation: pulse 1s ease infinite;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .status-indicator {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .solicitacao-actions {
+        flex-direction: column;
+    }
+
+    .solicitacao-actions button {
+        width: 100%;
+    }
+} 
