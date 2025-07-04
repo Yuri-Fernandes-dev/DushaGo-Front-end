@@ -14,12 +14,12 @@ Você pode acessar a versão de demonstração do frontend em:
 ### Credenciais para Teste
 
 #### Cliente
-- Email: cliente@teste.com
-- Senha: cliente123
+- Email: cliente@exemplo.com
+- Senha: 123456
 
 #### Lavador
-- Email: lavador@teste.com
-- Senha: lavador123
+- Email: lavador@exemplo.com
+- Senha: 123456
 
 ## Funcionalidades Principais
 
